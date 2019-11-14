@@ -15,6 +15,5 @@
     <div class="title">
       快來創造專屬於你的照片部落格
     </div>
-
   </body>  
 </html>

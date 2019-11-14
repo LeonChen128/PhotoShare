@@ -1,0 +1,104 @@
+
+.backgroundColor {
+  background-color:rgba(246,246,246,1);
+  margin: 0;
+}
+
+.header {
+  background-color:rgba(32,84,125);
+  width:100%;
+  height:52px;
+}
+
+.home_pic {
+  display: inline-block;
+  width:90px;
+  height:55px;
+  margin:0 0 0 10px;
+}
+
+.header_word {
+  width: 50px;
+  height: 30px;
+  border-radius: 3px;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  font-size:16px;
+  float:right;
+  margin: 10px 50px 0px 0px;
+  padding-top:5px;
+}
+
+.login_table {
+  margin:50px auto;
+  width: 350px;
+  height: 450px;
+  border: 1px solid rgba(200,200,200,1);
+  border-radius:5px;
+  background-color:white;
+  box-shadow: 5px 5px 0px 0px rgba(230,230,230,1);
+}
+
+.title {
+  font-size:30px;
+  text-align: center;
+}
+
+.account {
+  display: block;
+  margin: 0 auto;
+  width:250px;
+  height:30px;
+  margin-top:50px;
+  border: 1px solid rgba(200,200,200,1);
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.password {
+  display: block;
+  margin: 0 auto;
+  width:250px;
+  height:30px;
+  margin-top: 15px;
+  border: 1px solid rgba(200,200,200,1);
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.button {
+  width: 150px;
+  height: 30px;
+  font-size: 16px;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 20px 0 0 48px; 
+  background-color: rgba(40,118,179,1)
+  
+}
+
+.cancel {
+  display: inline-block;
+  width: 67px;
+  height: 26px;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 16px;
+  padding: 3px 0 0 0 ;
+  text-decoration: none;
+  margin-left: 31px;
+  background-color: rgba(179,44,44,1);
+  color: white;
+}
+
+.word_concern {
+  display: inline-block;
+  margin: 35px 0 0 50px ;
+}
+
+.register {
+  text-decoration: none;
+  margin-left: 15px;
+}
