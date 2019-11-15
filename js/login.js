@@ -23,6 +23,14 @@ function outCancel(demo) {
   document.getElementById(demo).style.background="rgba(179,44,44,1)";
 }
 
+function overRegister(demo) {
+  document.getElementById(demo).style.color="rgba(4,42,249,1)";
+}
+
+function outRegister(demo) {
+  document.getElementById(demo).style.color="rgba(55,138,204,1)";
+}
+
 function checkLogin() {
   var account = document.getElementById('_account').value;
   var password = document.getElementById('_password').value;

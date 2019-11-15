@@ -46,7 +46,7 @@
   text-align: center;
 }
 
-.account {
+.name {
   display: block;
   margin: 0 auto;
   width:250px;
@@ -57,7 +57,29 @@
   font-size: 14px;
 }
 
+.account {
+  display: block;
+  margin: 0 auto;
+  width:250px;
+  height:30px;
+  margin-top:15px;
+  border: 1px solid rgba(200,200,200,1);
+  border-radius: 3px;
+  font-size: 14px;
+}
+
 .password {
+  display: block;
+  margin: 0 auto;
+  width:250px;
+  height:30px;
+  margin-top: 15px;
+  border: 1px solid rgba(200,200,200,1);
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.repassword {
   display: block;
   margin: 0 auto;
   width:250px;

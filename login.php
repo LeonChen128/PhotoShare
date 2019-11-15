@@ -23,7 +23,7 @@
         </tr> 
       </form>
       <p class="word_concern">還不是會員？</p>
-      <a href="register.php" class="register">立刻加入會員</a>
+      <a href="register.php" id="_register" class="register" onmouseover="overRegister('_register')" onmouseout="outRegister('_register')">立刻加入會員</a>
     </div>
   </body>  
 </html>
