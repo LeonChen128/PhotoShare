@@ -114,14 +114,3 @@
   background-color: rgba(179,44,44,1);
   color: white;
 }
-
-.word_concern {
-  display: inline-block;
-  margin: 35px 0 0 50px ;
-}
-
-.register {
-  text-decoration: none;
-  margin-left: 15px;
-  color: rgba(55,138,204,1);
-}
