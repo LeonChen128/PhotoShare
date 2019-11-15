@@ -63,3 +63,23 @@ function register($name, $account, $password) {
       return [];
   }
 }
+
+function login($account, $password) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('SELECT * FROM User WHERE account=? AND password=?');
+    $sql->execute([$account, $password]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
+
+
+
+
+

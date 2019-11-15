@@ -14,7 +14,7 @@
     </div>  
     <div class="login_table">
       <p class="title">會員登入</p>
-      <form action="home.php" method="post">
+      <form action="login2.php" method="post">
         <input type="text" name="account" id="_account" placeholder="請輸入帳號..." class="account"> 
         <input type="password" name="password" id="_password" placeholder="請輸入密碼..." class="password">  
         <tr>
