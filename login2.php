@@ -4,7 +4,11 @@ include 'lib/define.php';
 include 'lib/funcs.php';
 
 if (!isset($_POST['account'], $_POST['password'])) {
-  echo wrongInput('通訊錯誤', 'index.php');
+  if (isset($_SESSION['user'])) {
+    echo wrongInput('通訊錯誤', 'home.php');
+  }else {
+    echo wrongInput('通訊錯誤', 'index.php');
+  }
 }
 
 if (isset($_SESSION['user'])) {
@@ -39,7 +43,7 @@ if (login($account, $password)) {
     <meta http-equiv="Content-Language" content="zh-tw">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="css/login2.css">
-    <title>照片小站-首頁</title>
+    <title>照片小站-登入成功</title>
   </head>
   <body class="backgroundColor">
     <script src="js/login2.js"></script>
