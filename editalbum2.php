@@ -3,35 +3,37 @@
 include 'lib/define.php';
 include 'lib/funcs.php';
 
-if (!isset($_POST['account'], $_POST['password'])) {
-  if (isset($_SESSION['user'])) {
-    echo wrongInput('通訊錯誤', 'home.php?id=' . $_SESSION['user']['id']);
-  }else {
+if (!isset($_POST['title'])) {
+  if (!isset($_SESSION['user'])) {
     echo wrongInput('通訊錯誤', 'index.php');
+  } else {
+    header('Refresh:0 url=home.php?id=' . $_SESSION['user']['id']);
+    exit();
   }
 }
 
-if (isset($_SESSION['user'])) {
-  unset($_SESSION['user']);
+if (!isset($_SESSION['user'])) {
+  echo wrongInput('通訊錯誤', 'index.php');
 }
 
-$account  = inputData($_POST['account']);
-$password = inputData($_POST['password']);
+if ($_POST['title'] == '') {
+  echo wrongInput('名稱不可空白', 'editalbum.php');
+} elseif (mb_strlen($_POST['title']) > 10) {
+  echo wrongInput('名稱字數須小於10', 'editalbum.php');
+}
 
-if (login($account, $password)) {
-  foreach (login($account, $password) as $user) {
-    $_SESSION['user'] = [
-      'id'       => $user['id'],
-      'name'     => $user['name'],
-      'account'  => $user['account'],
-      'password' => $user['password']
-    ];
-  }
+$title  = inputData($_POST['title']);
+$author = $_SESSION['user']['name'];
+$date   = getDateTime();
+
+if (insertAlbum($title, $author, $date)) {
 } else {
-  echo wrongInput('帳號密碼有誤，請確認。', 'login.php');
+  echo wrongInput('新增失敗', 'editalbum.php');
 }
 
 ?>
+
+
 
 
 
@@ -42,11 +44,11 @@ if (login($account, $password)) {
   <head>
     <meta http-equiv="Content-Language" content="zh-tw">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="css/login2.css">
-    <title>照片小站-登入成功</title>
+    <link rel="stylesheet" type="text/css" href="css/editalbum2.css">
+    <title>照片小站-相簿編輯</title>
   </head>
   <body class="backgroundColor">
-    <script src="js/login2.js"></script>
+    <script src="js/editalbum2.js"></script>
     <div class="header">
       <?php
         echo '<a href="home.php?id=' . $_SESSION['user']['id'] . '">';
@@ -58,12 +60,14 @@ if (login($account, $password)) {
       <div class="title_block">
         <img src="img/notice.jpg" class="notice">
       </div> 
-      <p class="success">歡迎回來，親愛的<?php echo $_SESSION['user']['name'];?></p> 
+      <p class="success">相簿建立成功！</p> 
       <?php
         echo '<a href="home.php?id=' . $_SESSION['user']['id'] . '" class="home" id="_home" onmouseover="overHome(' . "'_home'" . ')" onmouseout="outHome(' . "'_home'" . ')">回我的首頁</a>';
       ?>
     </div> 
+    
   </body>  
 </html>
+
 
 

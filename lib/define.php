@@ -6,3 +6,4 @@ define('DB_PSWD', '1234');
 define('DB_NAME', 'PhotoShare');
 
 session_start();
+

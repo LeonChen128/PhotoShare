@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('Asia/Taipei');  
+
 function newPDO() {
   try {
     return new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PSWD);
@@ -16,6 +18,19 @@ function wrongInput($message, $url) {
   echo $message;
   header('Refresh:3 url=' . $url);
   exit();
+}
+
+function getDateTime() { 
+  $day = [
+    'Saturday'  => '禮拜六',
+    'Sunday'    => '禮拜日',
+    'Monday'    => '禮拜一',
+    'Tuesday'   => '禮拜二',
+    'Wednesday' => '禮拜三',
+    'Thursday'  => '禮拜四',
+    'Friday'    => '禮拜五',    
+  ];
+  return date('Y/m/d ') . $day[date('l')] . date(' h:i a');
 }
 
 class CheckUser {
@@ -104,6 +119,22 @@ function getNameById($id) {
       return $row['name'];
     }
   } catch (PDOCeption $e) {
+    return [];
+  }
+}
+
+function insertAlbum($title, $author, $date) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('INSERT INTO Album VALUES(null, ?, ?, ?)');
+    $sql->execute([$title, $author, $date]);
+    $sql = $pdo->prepare('SELECT * FROM Album WHERE title=? AND author=? AND date=?');
+    $sql->execute([$title, $author, $date]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
     return [];
   }
 }
