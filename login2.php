@@ -5,7 +5,7 @@ include 'lib/funcs.php';
 
 if (!isset($_POST['account'], $_POST['password'])) {
   if (isset($_SESSION['user'])) {
-    echo wrongInput('通訊錯誤', 'home.php');
+    echo wrongInput('通訊錯誤', 'home.php?id=' . $_SESSION['user']['id']);
   }else {
     echo wrongInput('通訊錯誤', 'index.php');
   }
@@ -48,7 +48,10 @@ if (login($account, $password)) {
   <body class="backgroundColor">
     <script src="js/login2.js"></script>
     <div class="header">
-      <a href="home.php"><img src="img/home.jpg" class="home_pic"></a>
+      <?php
+        echo '<a href="home.php?id=' . $_SESSION['user']['id'] . '">';
+        echo '<img src="img/home.jpg" class="home_pic"></a>';
+      ?>
       <a href="logout.php" class="header_word" id="_logout" onmouseover="overHeader('_logout')" onmouseout="outHeader('_logout')">登出</a>
     </div> 
     <div class="notice_table">
@@ -56,7 +59,10 @@ if (login($account, $password)) {
         <img src="img/notice.jpg" class="notice">
       </div> 
       <p class="success">歡迎回來，親愛的<?php echo $_SESSION['user']['name'];?></p> 
-      <a href="home.php" class="home" id="_home" onmouseover="overHome('_home')" onmouseout="outHome('_home')">回我的首頁</a>
+      <?php
+        $home = '_home';
+        echo '<a href="home.php?id=' . $_SESSION['user']['id'] . '"' . 'class="home" id="_home" onmouseover="overHome(' . $home . ')" onmouseout="outHome(' . $home . ')">回我的首頁</a>';
+      ?>
     </div> 
   </body>  
 </html>

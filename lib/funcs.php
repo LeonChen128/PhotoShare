@@ -78,6 +78,38 @@ function login($account, $password) {
   }
 }
 
+function checkId($id) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('SELECT * FROM User WHERE id = ?');
+    $sql->execute([$id]);
+    return $sql->fetchAll();
+  } catch (PDOCeption $e) {
+    return [];
+  }
+}
+
+function getNameById($id) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('SELECT * FROM User WHERE id = ?');
+    $sql->execute([$id]);
+    foreach ($sql->fetchAll() as $row) {
+      return $row['name'];
+    }
+  } catch (PDOCeption $e) {
+    return [];
+  }
+}
+
+
+
 
 
 
