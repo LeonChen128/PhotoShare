@@ -129,7 +129,7 @@ function insertAlbum($title, $author, $date) {
     return [];
   }
   try {
-    $sql = $pdo->prepare('INSERT INTO Album VALUES(null, ?, ?, ?)');
+    $sql = $pdo->prepare('INSERT INTO Album VALUES(null, ?, ?, ?, null)');
     $sql->execute([$title, $author, $date]);
     $sql = $pdo->prepare('SELECT * FROM Album WHERE title=? AND author=? AND date=?');
     $sql->execute([$title, $author, $date]);
@@ -138,6 +138,96 @@ function insertAlbum($title, $author, $date) {
     return [];
   }
 }
+
+function getAlbumOne ($title, $author, $date) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('SELECT * FROM Album WHERE title=? AND author=? AND date=?');
+    $sql->execute([$title, $author, $date]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
+
+function thisProjectPath() {
+  $thisPhpPath = __File__;
+  $pathArray = explode('/', $thisPhpPath);
+  array_pop($pathArray);
+  array_pop($pathArray);  
+  $thisProjectPath = implode('/', $pathArray);
+  return $thisProjectPath;
+}
+
+function getFileExt($file) {
+  $fileArray = explode('.', $file);
+  return end($fileArray);
+}
+
+function uploadFile($folder, $postName) {
+  if (is_uploaded_file($_FILES[$postName]['tmp_name'])) {
+    if (!file_exists($folder)) {
+      mkdir($folder);
+    }
+    $newFilePath = $folder . '/1' . '.' . getFileExt($_FILES[$postName]['name']);
+    if (move_uploaded_file($_FILES[$postName]['tmp_name'], $newFilePath)) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
+}
+
+function getUserById($id) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('SELECT * FROM User WHERE id=?');
+    $sql->execute([$id]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
+function insertAlbumPath($newName, $id) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('UPDATE Album SET path=? WHERE id=?');
+    $sql->execute([$newName, $id]);
+    $sql = $pdo->prepare('SELECT * FROM Album WHERE path=? AND id=?');
+    $sql->execute([$newName, $id]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
+function getUserAlbum($name) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('SELECT * FROM Album WHERE author=?');
+    $sql->execute([$name]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
 
 
 

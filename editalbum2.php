@@ -22,14 +22,41 @@ if ($_POST['title'] == '') {
   echo wrongInput('名稱字數須小於10', 'editalbum.php');
 }
 
+if (is_uploaded_file($_FILES['file']['tmp_name'])) {  
+} else {
+  echo wrongInput('請上傳相簿封面', 'editalbum.php');
+}
+
 $title  = inputData($_POST['title']);
 $author = $_SESSION['user']['name'];
 $date   = getDateTime();
 
 if (insertAlbum($title, $author, $date)) {
 } else {
-  echo wrongInput('新增失敗', 'editalbum.php');
+  echo wrongInput('新增失敗1', 'editalbum.php');
 }
+
+if (getAlbumOne($title, $author, $date)) {
+  foreach (getAlbumOne($title, $author, $date) as $albumOne) {    
+  }
+} else {
+  echo wrongInput('新增失敗2', 'editalbum.php');
+}
+
+$thisProjectPath = thisProjectPath();
+$folder  = $thisProjectPath . '/upload/' . $_SESSION['user']['id'] . '/' . $albumOne['id'];
+$newName = 'upload/' . $_SESSION['user']['id'] . '/' . $albumOne['id'] . '/1' . '.' . getFileExt($_FILES['file']['name']);
+
+if (uploadFile($folder, 'file')) { 
+} else {
+  echo wrongInput('照片上傳失敗', 'editalbum.php'); 
+}
+
+if (insertAlbumPath($newName, $albumOne['id'])) {
+} else {
+  echo wrongInput('照片上傳失敗', 'editalbum.php');  
+}
+
 
 ?>
 
