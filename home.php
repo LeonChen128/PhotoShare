@@ -9,11 +9,26 @@ if (!isset($_SESSION['user'])) {
 
 if (!isset($_GET['id'])) {
   header('location:home.php?id=' . $_SESSION['user']['id']);
+  exit();
 }
 
 if (!checkId($_GET['id'])) {
   header('location:home.php?id=' . $_SESSION['user']['id']);
+  exit();
 }
+
+foreach (getUserById($_GET['id']) as $user) {
+}
+
+$userFolder = thisProjectPath() . '/upload/' . $_GET['id'];
+if (!file_exists($userFolder)) {
+  mkdir($userFolder);
+}
+
+$mainPhotoPath = $userFolder . '/mainPhoto.jpg';
+
+
+
 
 ?>
 
@@ -34,28 +49,51 @@ if (!checkId($_GET['id'])) {
     ?>
   </head>
   <body class="backgroundColor">
-    <script src="js/home.js"></script>
     <div class="header">
       <?php
         echo '<a href="home.php?id=' . $_SESSION['user']['id'] . '">';
         echo '<img src="img/home.jpg" class="home_pic"></a>';
       ?>
-      <a href="logout.php" class="header_word" id="_logout" onmouseover="overHeader('_logout')" onmouseout="outHeader('_logout')">登出</a>
+      <a href="logout.php" class="header_word">登出</a>
     </div> 
     <div class="main_photo_edge">
-      <img src="img/alien.jpg" class="main_photo">
+      <?php
+      if (file_exists($mainPhotoPath)) {
+        echo '<img src="upload/' . $_GET['id'] . '/mainPhoto.jpg" class="main_photo">' ;      
+      } else {
+        if ($_GET['id'] == $_SESSION['user']['id']) {
+          echo '<div class="upload_photo">';
+          echo '<a href="editmainphoto.php" class="upload_word">上傳大頭照</a>';
+          echo '</div>';
+        } else {
+          echo '<div class="upload_photo">';
+          echo '<spanl>無大頭照</spanl>';
+          echo '</div>';
+        }     
+      }     
+      ?>
     </div>
     <p class="main_photo_name"><?php echo getNameById($_GET['id']);?></p>
     <div class="album_edge">
-      <div class="text"></div>
-      <div class="text2"></div>
-      <div class="text3"></div>
-      <div class="text4"></div>
-      <div class="new_photo">
-        <a href="editalbum.php" class="edit_album" id="_edit_album" onmouseover="overEdit('_edit_album')" onmouseout="outEdit('_edit_album')">+ 建立相簿</a>
-      </div>
-      
-
+      <?php
+      foreach (getUserAlbum($user['name']) as $albums) {
+        echo '<div class="block">';
+        echo '<div class="album">';
+        echo '<a href="photo.php?id=' . $albums['id'] . '"><img src="' . $albums['path'] . '" class="album_cover"></a>';
+        echo '</div>';
+        echo '<div class="title_word">';
+        echo '<a href="photo.php?id=' . $albums['id'] . '" class="album_word">' . $albums['title'] .'</a>';
+        echo '</div>';
+        echo '</div>';
+      }        
+      ?>
+      <?php
+      if ($_GET['id'] == $_SESSION['user']['id']) {
+        echo '<div class="new_photo">';
+        echo '<a href="editalbum.php" class="edit_album">+ 建立相簿</a>';
+        echo '</div>';
+      }           
+      ?>
     </div>
   </body>  
 </html>
