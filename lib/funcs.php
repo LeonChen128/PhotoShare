@@ -228,6 +228,14 @@ function getUserAlbum($name) {
   }
 }
 
+function uploadMainPhoto ($fileTmpName, $filePath) {
+  if (move_uploaded_file($fileTmpName, $filePath)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 
 
 

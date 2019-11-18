@@ -20,7 +20,7 @@
 }
 
 .header_word {
-  width: 50px;
+  padding: 2px 5px;
   height: 30px;
   border-radius: 3px;
   text-align: center;
@@ -29,8 +29,8 @@
   color: white;
   font-size:16px;
   float:right;
-  margin: 10px 50px 0px 0px;
-  padding-top:5px;
+  margin: 10px 25px 0px 0px;
+  line-height: 30px;
 }
 
 .header_word:hover {
@@ -39,7 +39,9 @@
 
 
 .main_photo_edge {
+  display: inline-block;
   margin: 80px auto;
+  margin-left:570px;
   width: 280px;
   height: 210px;
   background: white;
@@ -56,7 +58,7 @@
 
 .main_photo_name {
   text-align: center;
-  margin-top: -70px;
+  margin-top: -50px;
   font-size: 18px;
 }
 
@@ -76,11 +78,28 @@
 
 .upload_word {
   text-decoration: none;
-  color: rgba(80,160,224,1);
+  color: rgba(0,0,0,1);
 }
 
-.upload_word:hover {
-  color: rgba(11,115,197,1);
+.editmainphoto {
+  display: inline-block;
+  width: 80px;
+  height: 25px;
+  border: 1px solid rgba(150,150,150,1);
+  background: lightgray;
+  border-radius: 3px;
+  margin-left:20px;
+  text-align: center;
+  line-height: 25px;
+}
+
+.editmainphoto_word {
+  text-decoration: none;
+  color: rgba(100,100,100,1);
+}
+
+.editmainphoto_word:hover {
+  color: rgba(50,50,50,1);
 }
 
 .block {
