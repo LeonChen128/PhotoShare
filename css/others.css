@@ -37,28 +37,29 @@
   background: rgba(18,60,93,1);
 }
 
-.title {
-  text-align: center;
-  height: 70px;
-  line-height: 70px;
+.hall {
+  width: 200px;
+  height: 50px;
   font-size: 40px;
-  margin-top: 100px;
+  margin: 20px auto;
 }
 
-.photo_frame {
-  width: 995px;
-  border: 1px solid rgba(200,200,200,1);
-  background: rgba(126,171,193,1);
-  margin: 0 auto;
+.users_edge {
+  width: 1085px;
+  background: rgba(255,255,255,1);
+  margin: 30px auto;
+  padding: 0 0 15px 15px;
   border-radius: 3px;
-  display: inline-block;
-  margin-left: 250px;
+  border: 1px solid rgba(150,150,150,1);
 }
 
 .img_edge {
-  margin:15px 0px 0px 15px;
   display: inline-block;
-  float: left;
+  text-align: center;
+  border: 1px solid rgba(80,80,80,1);
+  padding: 10px;
+  border-radius: 3px;
+  margin: 15px 15px 0 0 ;
 }
 
 .img {
@@ -66,25 +67,13 @@
   height: 190px;
 }
 
-.new_photo {
-  display: inline-block;
-  width: 180px;
-  height: 190px;
-  text-align: center;
-  line-height: 190px;
-  border: 1px dashed black;
-  float: left;
-  margin: 15px 0px 15px 15px;
+.name {
+ margin: 0;
 }
 
-.new_word {
-  text-decoration: none;
-  color: rgba(80,80,80,1);
-}
 
-.new_word:hover {
-  color: rgba(30,30,30,1);
-}
+
+
 
 
 

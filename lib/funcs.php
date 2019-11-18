@@ -184,6 +184,20 @@ function uploadFile($folder, $postName) {
   }
 }
 
+function getUserAll() {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('SELECT * FROM User');
+    $sql->execute();
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
 function getUserById($id) {
   $pdo = newPDO();
   if (!$pdo) {
