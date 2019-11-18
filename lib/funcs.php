@@ -11,7 +11,7 @@ function newPDO() {
 }
 
 function inputData($data) {
-  return htmlspecialchars(trim($data));
+  return trim($data);
 }
 
 function wrongInput($message, $url) {
@@ -236,6 +236,92 @@ function uploadMainPhoto ($fileTmpName, $filePath) {
   }
 }
 
+function getAlbumById ($id) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('SELECT * FROM Album WHERE id=?');
+    $sql->execute([$id]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
+function insertPhoto($title, $album_id, $date) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('INSERT INTO Photo VALUES(null,? ,? ,? , null)');
+    $sql->execute([$title, $album_id, $date]);
+    $sql = $pdo->prepare('SELECT * FROM Photo WHERE title=? AND album_id=? AND date=?');
+    $sql->execute([$title, $album_id, $date]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
+function insertPhotoPath($path, $id) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('UPDATE Photo SET path=? WHERE id=?');
+    $sql->execute([$path, $id]);
+    $sql = $pdo->prepare('SELECT * FROM Photo WHERE path=? AND id=?');
+    $sql->execute([$path, $id]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
+function getUserByName($name) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('SELECT * FROM User WHERE name=?');
+    $sql->execute([$name]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
+function umaskChmod($path, $mode = 0777) {
+    $oldmask = umask(0);
+    @chmod($path, $mode);
+    umask($oldmask);
+  }
+
+function umaskMkdir($path, $mode = 0777, $recursive = false) {
+  $oldmask = umask(0);
+  $return = @mkdir($path, $mode, $recursive);
+  umask($oldmask);
+  return $return;
+}
+
+function getPhotoById($id) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('SELECT * FROM Photo WHERE album_id=?');
+    $sql->execute([$id]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
 
 
 

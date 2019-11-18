@@ -22,7 +22,7 @@ foreach (getUserById($_GET['id']) as $user) {
 
 $userFolder = thisProjectPath() . '/upload/' . $_GET['id'];
 if (!file_exists($userFolder)) {
-  mkdir($userFolder);
+  umaskMkdir($userFolder);
 }
 
 $mainPhotoPath = $userFolder . '/mainPhoto.jpg';
@@ -55,6 +55,7 @@ $mainPhotoPath = $userFolder . '/mainPhoto.jpg';
         echo '<img src="img/home.jpg" class="home_pic"></a>';
       ?>
       <a href="logout.php" class="header_word">登出</a>
+      <a href="others.php" class="header_word">看看其他人</a>
       <?php
       echo '<a href="home.php?id=' . $_SESSION['user']['id'] .'" class="header_word">我的首頁</a>'
       ?>

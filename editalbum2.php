@@ -45,7 +45,7 @@ if (getAlbumOne($title, $author, $date)) {
 
 $thisProjectPath = thisProjectPath();
 $folder  = $thisProjectPath . '/upload/' . $_SESSION['user']['id'] . '/' . $albumOne['id'];
-$newName = 'upload/' . $_SESSION['user']['id'] . '/' . $albumOne['id'] . '/1' . '.' . getFileExt($_FILES['file']['name']);
+$newName = 'upload/' . $_SESSION['user']['id'] . '/' . $albumOne['id'] . '/0' . '.' . getFileExt($_FILES['file']['name']);
 
 if (uploadFile($folder, 'file')) { 
 } else {
@@ -81,7 +81,10 @@ if (insertAlbumPath($newName, $albumOne['id'])) {
         echo '<a href="home.php?id=' . $_SESSION['user']['id'] . '">';
         echo '<img src="img/home.jpg" class="home_pic"></a>';
       ?>
-      <a href="logout.php" class="header_word" id="_logout" onmouseover="overHeader('_logout')" onmouseout="outHeader('_logout')">登出</a>
+      <a href="logout.php" class="header_word">登出</a>
+      <?php
+      echo '<a href="home.php?id=' . $_SESSION['user']['id'] .'" class="header_word">我的首頁</a>'
+      ?>
     </div> 
     <div class="notice_table">
       <div class="title_block">
@@ -89,7 +92,7 @@ if (insertAlbumPath($newName, $albumOne['id'])) {
       </div> 
       <p class="success">相簿建立成功！</p> 
       <?php
-        echo '<a href="home.php?id=' . $_SESSION['user']['id'] . '" class="home" id="_home" onmouseover="overHome(' . "'_home'" . ')" onmouseout="outHome(' . "'_home'" . ')">回我的首頁</a>';
+        echo '<a href="home.php?id=' . $_SESSION['user']['id'] . '" class="home">回我的首頁</a>';
       ?>
     </div> 
     

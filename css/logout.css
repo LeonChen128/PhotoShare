@@ -18,7 +18,7 @@
 }
 
 .header_word {
-  width: 50px;
+  padding: 2px 5px;
   height: 30px;
   border-radius: 3px;
   text-align: center;
@@ -27,8 +27,12 @@
   color: white;
   font-size:16px;
   float:right;
-  margin: 10px 50px 0px 0px;
-  padding-top:5px;
+  margin: 10px 25px 0px 0px;
+  line-height: 30px;
+}
+
+.header_word:hover {
+  background: rgba(18,60,93,1);
 }
 
 .notice_table {
@@ -73,6 +77,10 @@
   padding-top: 5px;
 }
 
+.logout:hover {
+  background: rgba(5,91,130,1);
+}
+
 .cancel {
   display: inline-block;
   text-decoration: none;
@@ -83,6 +91,10 @@
   height: 30px;
   background: rgba(179,44,44,1);
   padding-top: 5px;
+}
+
+.cancel:hover {
+  background: rgba(146,36,36,1);
 }
 
 
