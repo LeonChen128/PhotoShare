@@ -10,7 +10,7 @@
     <script src="js/register.js"></script>
     <div class="header">
       <a href="index.php"><img src="img/home.jpg" class="home_pic"></a>
-      <a href="login.php" class="header_word" id="_login" onmouseover="overHeader('_login')" onmouseout="outHeader('_login')">登入</a>
+      <a href="login.php" class="header_word">登入</a>
     </div>  
     <div class="login_table">
       <p class="title">會員註冊</p>
@@ -20,8 +20,8 @@
         <input type="password" name="password" id="_password" placeholder="字數12以內之密碼" class="password"> 
         <input type="password" name="repassword" id="_repassword" placeholder="請再次輸入密碼..." class="repassword">  
         <tr>
-          <button type="submit" id="_button" class="button" onclick="return checkRegister();" onmouseover="overButton('_button')" onmouseout="outButton('_button');"><spanl style="color: white">註冊</spanl></button>
-          <a href="index.php" id="_cancel" class="cancel" onmouseover="overCancel('_cancel');" onmouseout="outCancel('_cancel');">取消</a>
+          <button type="submit" class="button" onclick="return checkRegister();"><spanl style="color: white">註冊</spanl></button>
+          <a href="index.php" class="cancel">取消</a>
         </tr> 
       </form>
     </div>

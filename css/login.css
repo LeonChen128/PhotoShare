@@ -18,7 +18,7 @@
 }
 
 .header_word {
-  width: 50px;
+  padding: 2px 5px;
   height: 30px;
   border-radius: 3px;
   text-align: center;
@@ -27,8 +27,12 @@
   color: white;
   font-size:16px;
   float:right;
-  margin: 10px 50px 0px 0px;
-  padding-top:5px;
+  margin: 10px 25px 0px 0px;
+  line-height: 30px;
+}
+
+.header_word:hover {
+  background: rgba(18,60,93,1);
 }
 
 .login_table {
@@ -76,7 +80,10 @@
   display: inline-block;
   margin: 20px 0 0 48px; 
   background-color: rgba(40,118,179,1)
-  
+}
+
+.button:hover {
+  background-color: rgba(28,83,125,1)
 }
 
 .cancel {
@@ -93,6 +100,10 @@
   color: white;
 }
 
+.cancel:hover {
+  background-color: rgba(146,36,36,1);
+}
+
 .word_concern {
   display: inline-block;
   margin: 35px 0 0 50px ;
@@ -102,4 +113,8 @@
   text-decoration: none;
   margin-left: 15px;
   color: rgba(55,138,204,1);
+}
+
+.register:hover {
+  color: rgba(4,42,249,1);
 }

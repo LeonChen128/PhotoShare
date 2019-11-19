@@ -62,14 +62,29 @@
   margin: 15px 15px 0 0 ;
 }
 
+.img_edge:hover {
+  background: rgba(222,215,154,1);
+}
+
 .img {
   width: 180px;
   height: 190px;
 }
 
-.name {
- margin: 0;
+.nomain {
+  border: 1px solid rgba(50,50,50,1);
+  width: 180px;
+  height: 190px;
+  margin: 0 0 3px 0 ;
+  line-height: 190px;
+  color: black;
 }
+
+.name {
+  margin: 0;
+  color: rgba(50,50,50,1);
+}
+
 
 
 

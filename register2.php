@@ -63,17 +63,16 @@ if (register($name, $account, $password)) {
     <title>照片小站-會員註冊</title>
   </head>
   <body class="backgroundColor">
-    <script src="js/register2.js"></script>
     <div class="header">
       <a href="index.php"><img src="img/home.jpg" class="home_pic"></a>
-      <a href="login.php" class="header_word" id="_login" onmouseover="overHeader('_login')" onmouseout="outHeader('_login')">登入</a>
+      <a href="login.php" class="header_word">登入</a>
     </div> 
     <div class="notice_table">
       <div class="title_block">
         <img src="img/notice.jpg" class="notice">
       </div> 
       <p class="success">註冊成功！</p> 
-      <a href="login.php" class="login" id="_nowlogin" onmouseover="overLogin('_nowlogin')" onmouseout="outLogin('_nowlogin')">馬上登入</a>
+      <a href="login.php" class="login">馬上登入</a>
     </div> 
   </body>  
 </html>

@@ -18,7 +18,7 @@
 }
 
 .header_word {
-  width: 50px;
+  padding: 2px 5px;
   height: 30px;
   border-radius: 3px;
   text-align: center;
@@ -27,8 +27,12 @@
   color: white;
   font-size:16px;
   float:right;
-  margin: 10px 50px 0px 0px;
-  padding-top:5px;
+  margin: 10px 25px 0px 0px;
+  line-height: 30px;
+}
+
+.header_word:hover {
+  background: rgba(18,60,93,1);
 }
 
 .notice_table {
@@ -71,6 +75,10 @@
   background: rgba(7,137,195,1);
   margin: 25px auto;
   padding-top: 5px;
+}
+
+.home:hover {
+  background: rgba(5,91,130,1);
 }
 
 

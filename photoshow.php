@@ -7,7 +7,7 @@ if (!isset($_SESSION['user'])) {
   echo wrongInput('通訊錯誤', 'index.php');
 } 
 
-if(!isset($_GET['id'])) {
+if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
   header('Location: home.php?id='. $_SESSION['user']['id']);
   exit();
 }

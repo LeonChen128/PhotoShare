@@ -56,7 +56,11 @@ if (move_uploaded_file($_FILES['file']['tmp_name'], $path)) {
         echo '<a href="home.php?id=' . $_SESSION['user']['id'] . '">';
         echo '<img src="img/home.jpg" class="home_pic"></a>';
       ?>
-      <a href="logout.php" class="header_word" id="_logout" onmouseover="overHeader('_logout')" onmouseout="outHeader('_logout')">登出</a>
+      <a href="logout.php" class="header_word">登出</a>
+      <a href="others.php" class="header_word">看看其他人</a>
+      <?php
+      echo '<a href="home.php?id=' . $_SESSION['user']['id'] .'" class="header_word">我的首頁</a>'
+      ?>
     </div> 
     <div class="notice_table">
       <div class="title_block">

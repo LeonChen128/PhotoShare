@@ -45,7 +45,7 @@ if (getAlbumOne($title, $author, $date)) {
 
 $thisProjectPath = thisProjectPath();
 $folder  = $thisProjectPath . '/upload/' . $_SESSION['user']['id'] . '/' . $albumOne['id'];
-$newName = 'upload/' . $_SESSION['user']['id'] . '/' . $albumOne['id'] . '/0' . '.' . getFileExt($_FILES['file']['name']);
+$newName = 'upload/' . $_SESSION['user']['id'] . '/' . $albumOne['id'] . '/1' . '.' . getFileExt($_FILES['file']['name']);
 
 if (uploadFile($folder, 'file')) { 
 } else {
@@ -75,13 +75,13 @@ if (insertAlbumPath($newName, $albumOne['id'])) {
     <title>照片小站-相簿編輯</title>
   </head>
   <body class="backgroundColor">
-    <script src="js/editalbum2.js"></script>
     <div class="header">
       <?php
         echo '<a href="home.php?id=' . $_SESSION['user']['id'] . '">';
         echo '<img src="img/home.jpg" class="home_pic"></a>';
       ?>
       <a href="logout.php" class="header_word">登出</a>
+      <a href="others.php" class="header_word">看看其他人</a>
       <?php
       echo '<a href="home.php?id=' . $_SESSION['user']['id'] .'" class="header_word">我的首頁</a>'
       ?>

@@ -3,7 +3,7 @@
 include 'lib/define.php';
 include 'lib/funcs.php';
 
-
+$thisProjectPath = thisProjectPath();
 
 ?>
 
@@ -37,7 +37,12 @@ include 'lib/funcs.php';
       foreach(getUserAll() as $users) {
         echo '<a href="home.php?id=' . $users['id'] . '">';
         echo '<div class="img_edge">';
-        echo '<img src="upload/' . $users['id'] . '/mainPhoto.jpg" class="img">';
+        $imgPath = $thisProjectPath . '/upload/' . $users['id'] . '/mainPhoto.jpg';
+        if (file_exists($imgPath)) {
+          echo '<img src="upload/' . $users['id'] . '/mainPhoto.jpg" class="img">';
+        } else {
+          echo '<p class="nomain">尚無頭像</p>';
+        }
         echo '<p class="name">' . $users['name'] . '</p>';
         echo '</div>';
         echo '</a>';
