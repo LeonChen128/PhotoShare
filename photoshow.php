@@ -3,26 +3,47 @@
 include 'lib/define.php';
 include 'lib/funcs.php';
 
-
 if (!isset($_SESSION['user'])) {
   echo wrongInput('通訊錯誤', 'index.php');
 } 
 
-if (!isset($_GET['id'])) {
+if(!isset($_GET['id'])) {
   header('Location: home.php?id='. $_SESSION['user']['id']);
+  exit();
 }
 
-if (!getAlbumById($_GET['id'])) {
+if (!getPhotoByPhotoId($_GET['id'])) {
   header('Location: home.php?id='. $_SESSION['user']['id']);
+  exit();
 }
 
-foreach (getAlbumById($_GET['id']) as $album) {
+foreach (getPhotoByPhotoId($_GET['id']) as $photo) {
 }
 
-foreach (getUserById($_GET['id']) as $user) {
+foreach (getAlbumById ($photo['album_id']) as $album) { 
 }
+
+$photos=[];
+
+foreach (getPhotoById($album['id']) as $row) {
+  $photos[] = $row['id'];
+}
+
+for ($i = 0; $i < count($photos); $i++) {
+  if ($photos[$i] == $_GET['id']) {
+    $b = $i;
+  }
+}
+
+
 
 ?>
+
+
+
+
+
+
 
 
 <!DOCTYPE html>
@@ -30,7 +51,7 @@ foreach (getUserById($_GET['id']) as $user) {
   <head>
     <meta http-equiv="Content-Language" content="zh-tw">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="css/photo.css">
+    <link rel="stylesheet" type="text/css" href="css/photoshow.css">
     <?php
       echo '<title>照片小站-' . getNameById($_GET['id']) . '的相簿</title>'
     ?>
@@ -48,26 +69,19 @@ foreach (getUserById($_GET['id']) as $user) {
       ?>
     </div> 
     <?php
-    echo '<p class="title">' . $album['author'] . '/' . $album['title'] . '</p>';
+    echo '<p class="title">' . $album['author'] . '/' . $album['title'] . '/' . $photo['title'] . '</p>';
     ?>
-    <div class="photo_frame">
+    <div class="imgframe">
       <?php
-      foreach (getPhotoById($_GET['id']) as $photos) {
-        echo '<div class="img_edge">';
-        echo '<a href="photoshow.php?id=' . $photos['id'] . '">';
-        echo '<img src="' . $photos['path'] . '" class="img">';
-        echo '</a>';
-        echo '</div>';
+      if (isset($photos[$b+1])) {
+        echo '<a href="photoshow.php?id=' . $photos[$b+1] . '">';       
+      } else {
+        echo '<a href="photoshow.php?id=' . $photos[0] . '">';
       }
-
-      if ($album['author'] == $_SESSION['user']['name']) {
-        echo '<div class="new_photo">';
-        echo '<a href="editphoto.php?id=' . $album['id'] . '" class="new_word">+ 新增照片</a>';
-        echo '</div>';
-      }
+      echo '<img src="' . $photo['path'] . '" class="img">';
+      echo '</a>';
       ?>
-
-    </div>     
+    </div>
   </body>  
 </html>
 

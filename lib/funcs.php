@@ -153,7 +153,6 @@ function getAlbumOne ($title, $author, $date) {
   }
 }
 
-
 function thisProjectPath() {
   $thisPhpPath = __File__;
   $pathArray = explode('/', $thisPhpPath);
@@ -331,6 +330,34 @@ function getPhotoById($id) {
   try {
     $sql = $pdo->prepare('SELECT * FROM Photo WHERE album_id=?');
     $sql->execute([$id]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
+function getPhotoByPhotoId($id) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('SELECT * FROM Photo WHERE id=?');
+    $sql->execute([$id]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
+function getPhotoByIdAndAlbum_id($id, $album_id) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('SELECT * FROM Photo WHERE id=? AND album_id=?');
+    $sql->execute([$id, $album_id]);
     return $sql->fetchAll();
   } catch (PDOException $e) {
     return [];
