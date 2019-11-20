@@ -410,6 +410,38 @@ function updateAlbum($title, $date, $path, $id) {
   }
 }
 
+function deletePhotoById($id) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('DELETE FROM Photo WHERE id=?');
+    $sql->execute([$id]);
+    $sql = $pdo->prepare('SELECT * FROM Photo WHERE id=?');
+    $sql->execute([$id]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
+function updatePhoto($title, $date, $id) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('UPDATE Photo SET title=?, date=? WHERE id=?');
+    $sql->execute([$title, $date, $id]);
+    $sql = $pdo->prepare('SELECT * FROM Photo WHERE title=? AND date=? AND id=?');
+    $sql->execute([$title, $date, $id]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
 
 
 
