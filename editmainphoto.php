@@ -22,7 +22,7 @@ if (!isset($_SESSION['user'])) {
     <meta http-equiv="Content-Language" content="zh-tw">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="css/editmainphoto.css">
-    <title>照片小站-相簿編輯</title>
+    <title>照片小站-頭像編輯</title>
   </head>
   <body class="backgroundColor">
     <script src="js/editmainphoto.js"></script>

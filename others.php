@@ -15,9 +15,7 @@ $thisProjectPath = thisProjectPath();
     <meta http-equiv="Content-Language" content="zh-tw">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="css/others.css">
-    <?php
-      echo '<title>照片小站-' . getNameById($_GET['id']) . '的頁面</title>'
-    ?>
+    <title>照片小站-使用者大廳</title>
   </head>
   <body class="backgroundColor">
     <div class="header">

@@ -8,7 +8,7 @@ if (!isset($_SESSION['user'])) {
   echo wrongInput('通訊錯誤', 'index.php');
 } 
 
-if (!isset($_GET['id'])) {
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
   header('Location: home.php?id='. $_SESSION['user']['id']);
 }
 
@@ -32,7 +32,7 @@ foreach (getUserById($_GET['id']) as $user) {
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="css/photo.css">
     <?php
-      echo '<title>照片小站-' . getNameById($_GET['id']) . '的相簿</title>'
+      echo '<title>照片小站-' . $album['author'] . '的相簿</title>'
     ?>
   </head>
   <body class="backgroundColor">

@@ -48,7 +48,7 @@ if (move_uploaded_file($_FILES['file']['tmp_name'], $path)) {
     <meta http-equiv="Content-Language" content="zh-tw">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="css/editphoto2.css">
-    <title>照片小站-照片編輯</title>
+    <title>照片小站-相片新增</title>
   </head>
   <body class="backgroundColor">
     <div class="header">

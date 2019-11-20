@@ -8,7 +8,7 @@ if (!isset($_SESSION['user'])) {
   echo wrongInput('通訊錯誤', 'index.php');
 } 
 
-if (!isset($_GET['id'])) {
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
   header('Location: home.php?id='. $_SESSION['user']['id']);
   exit();
 }
@@ -27,7 +27,7 @@ if (!isset($_GET['id'])) {
     <meta http-equiv="Content-Language" content="zh-tw">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="css/editphoto.css">
-    <title>照片小站-相簿編輯</title>
+    <title>照片小站-相片新增</title>
   </head>
   <body class="backgroundColor">
     <script src="js/editphoto.js"></script>
