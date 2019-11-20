@@ -44,6 +44,86 @@
   font-size: 30px;
   margin-top: 50px;
   margin-bottom: 0px;
+  color: rgba(80,80,80,1);
+}
+
+.home_word, .album_word {
+  text-decoration: none;
+  color: rgba(80,80,80,1);
+}
+
+.home_word:hover, .album_word:hover {
+  color: rgba(20,20,20,1);
+}
+
+.return_album {
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  background: rgba(255,255,255,1);
+  margin:0 0 0 50px;
+  text-align: center;
+  border: 1px solid rgba(220,220,220,1);
+  border-radius: 3px;
+}
+
+.return_album_word {
+  text-decoration: none;
+  font-size: 20px
+}
+
+.return_album_word_color {
+  color: rgba(66,167,228,1);
+}
+
+.return_album_word_color:hover {
+  color: rgba(41,89,199,1);
+}
+
+.back , .next {
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid rgba(220,220,220,1);
+  background: rgba(255,255,255,1);
+  border-radius: 3px;
+  margin-left: 213px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.next {
+  margin-left: 490px;
+}
+
+.back_word, .next_word {
+  text-decoration: none;
+  color: rgba(121,118,118,1);
+}
+.back_word:hover, .next_word:hover {
+  color: rgba(50,50,50,1);
+}
+
+.delete {
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  margin-left: 200px;
+}
+
+.button {
+  width: 100px;
+  height: 40px;
+  border-radius: 3px;
+  background: rgba(236,89,89,1);
+  color: white;
+  font-size: 20px
+}
+
+.button:hover {
+  background: rgba(150,28,28,1);
 }
 
 .imgframe {

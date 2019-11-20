@@ -23,6 +23,9 @@ foreach (getPhotoByPhotoId($_GET['id']) as $photo) {
 foreach (getAlbumById ($photo['album_id']) as $album) { 
 }
 
+foreach (getUserByName($album['author']) as $user) {
+}
+
 $photos=[];
 
 foreach (getPhotoById($album['id']) as $row) {
@@ -31,11 +34,11 @@ foreach (getPhotoById($album['id']) as $row) {
 
 for ($i = 0; $i < count($photos); $i++) {
   if ($photos[$i] == $_GET['id']) {
-    $b = $i;
+    $nowId = $i;
   }
 }
 
-
+$countPhotos = count($photos);
 
 ?>
 
@@ -53,7 +56,7 @@ for ($i = 0; $i < count($photos); $i++) {
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="css/photoshow.css">
     <?php
-      echo '<title>照片小站-' . getNameById($_GET['id']) . '的相簿</title>'
+      echo '<title>照片小站-' . $album['author'] . '的相片</title>'
     ?>
   </head>
   <body class="backgroundColor">
@@ -69,12 +72,50 @@ for ($i = 0; $i < count($photos); $i++) {
       ?>
     </div> 
     <?php
-    echo '<p class="title">' . $album['author'] . '/' . $album['title'] . '/' . $photo['title'] . '</p>';
+    echo '<p class="title">' . '<a href="home.php?id=' . $user['id'] . '" class="home_word">' . $album['author'] . '</a>';
+    echo '/' . '<a href="photo.php?id=' . $album['id'] . '" class="album_word">' . $album['title'] . '</a>' . '/' . $photo['title'] . '</p>';
     ?>
+    <div class="return_album">
+      <?php
+      echo '<a href="photo.php?id=' . $album['id'] . '" class="return_album_word"><spanl class="return_album_word_color">回相簿</spanl></a>';
+      ?>
+    </div>
+    <div class="back">
+      <?php
+      if (isset($photos[$nowId-1])) {
+        echo '<a href="photoshow.php?id=' . $photos[$nowId-1] . '" class="back_word">';       
+      } else {
+        echo '<a href="photoshow.php?id=' . $photos[$countPhotos-1] . '" class="back_word">';
+      }
+      echo '上一張';
+      echo '</a>';
+      ?>
+    </div>
+    <div class="next">
+      <?php
+      if (isset($photos[$nowId+1])) {
+        echo '<a href="photoshow.php?id=' . $photos[$nowId+1] . '" class="next_word">';       
+      } else {
+        echo '<a href="photoshow.php?id=' . $photos[0] . '" class="next_word">';
+      }
+      echo '下一張';
+      echo '</a>';
+      ?>
+    </div> 
+    <div class="delete">
+      <?php
+      if ($album['author'] == $_SESSION['user']['name']) {
+        echo '<form action="update_delete.php">';
+        echo '<input type="hidden" name="id" value="' . $_GET['id'] . '">';
+        echo '<button type="submit" class="button">編輯照片</button>';
+        echo '</form>';
+      }
+      ?>
+    </div>
     <div class="imgframe">
       <?php
-      if (isset($photos[$b+1])) {
-        echo '<a href="photoshow.php?id=' . $photos[$b+1] . '">';       
+      if (isset($photos[$nowId+1])) {
+        echo '<a href="photoshow.php?id=' . $photos[$nowId+1] . '">';       
       } else {
         echo '<a href="photoshow.php?id=' . $photos[0] . '">';
       }
