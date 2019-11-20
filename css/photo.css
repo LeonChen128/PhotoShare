@@ -42,7 +42,39 @@
   height: 70px;
   line-height: 70px;
   font-size: 40px;
-  margin-top: 100px;
+  margin-top: 50px;
+  margin-bottom: 0;
+  color: rgba(80,80,80,1);
+}
+
+.home_word {
+  text-decoration: none;
+  color: rgba(80,80,80,1);
+}
+
+.home_word:hover {
+  color: rgba(20,20,20,1);
+}
+
+.update_album_fram {
+  width: 100px;
+  height: 40px;
+  background: rgba(236,89,89,1);
+  text-align: center;
+  line-height: 40px;
+  border: 1px solid rgba(200,200,200,1);
+  border-radius: 3px;
+  margin-left: 1275px;
+}
+
+.update_album_fram:hover {
+  background: rgba(150,28,28,1);
+}
+
+.update_album_word {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
 }
 
 .photo_frame {
@@ -52,7 +84,7 @@
   margin: 0 auto;
   border-radius: 3px;
   display: inline-block;
-  margin-left: 250px;
+  margin-left: 215px;
 }
 
 .img_edge {

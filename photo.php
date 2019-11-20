@@ -19,7 +19,7 @@ if (!getAlbumById($_GET['id'])) {
 foreach (getAlbumById($_GET['id']) as $album) {
 }
 
-foreach (getUserById($_GET['id']) as $user) {
+foreach (getUserByName($album['author']) as $user) { 
 }
 
 ?>
@@ -48,7 +48,14 @@ foreach (getUserById($_GET['id']) as $user) {
       ?>
     </div> 
     <?php
-    echo '<p class="title">' . $album['author'] . '/' . $album['title'] . '</p>';
+    echo '<p class="title">' . '<a href="home.php?id=' . $user['id'] . '" class="home_word">' . $album['author'] . '</a>';
+    echo '/' . $album['title'] . '</p>';
+    if ($_SESSION['user']['id'] == $user['id']) {
+      echo '<div class="update_album_fram">';
+      echo '<a href="updatealbum.php?id=' . $album['id'] . '" class="update_album_word">';
+      echo '編輯相簿</a>';
+      echo '</div>';
+    }   
     ?>
     <div class="photo_frame">
       <?php
