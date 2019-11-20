@@ -83,32 +83,31 @@ $countPhotos = count($photos);
     <div class="back">
       <?php
       if (isset($photos[$nowId-1])) {
-        echo '<a href="photoshow.php?id=' . $photos[$nowId-1] . '" class="back_word">';       
+        echo '<a href="photoshow.php?id=' . $photos[$nowId-1] . '" class="back_word"><div class="back_frame">';       
       } else {
-        echo '<a href="photoshow.php?id=' . $photos[$countPhotos-1] . '" class="back_word">';
+        echo '<a href="photoshow.php?id=' . $photos[$countPhotos-1] . '" class="back_word"><div class="back_frame">';
       }
       echo '上一張';
-      echo '</a>';
+      echo '</div></a>';
       ?>
     </div>
     <div class="next">
       <?php
       if (isset($photos[$nowId+1])) {
-        echo '<a href="photoshow.php?id=' . $photos[$nowId+1] . '" class="next_word">';       
+        echo '<a href="photoshow.php?id=' . $photos[$nowId+1] . '" class="next_word"><div class="next_frame">';       
       } else {
-        echo '<a href="photoshow.php?id=' . $photos[0] . '" class="next_word">';
+        echo '<a href="photoshow.php?id=' . $photos[0] . '" class="next_word"><div class="next_frame">';
       }
       echo '下一張';
-      echo '</a>';
+      echo '</div></a>';
       ?>
     </div> 
-    <div class="delete">
+    <div class="update">
       <?php
       if ($album['author'] == $_SESSION['user']['name']) {
-        echo '<form action="update_delete.php">';
-        echo '<input type="hidden" name="id" value="' . $_GET['id'] . '">';
-        echo '<button type="submit" class="button">編輯照片</button>';
-        echo '</form>';
+        echo '<a href="updatephoto.php?id=' . $_GET['id'] . '" class="update_word">';
+        echo '<div class="word_frame">編輯照片</div>';
+        echo '</a>';
       }
       ?>
     </div>
