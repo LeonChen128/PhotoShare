@@ -36,9 +36,10 @@ if ($album['author'] != $_SESSION['user']['name']) {
     <meta http-equiv="Content-Language" content="zh-tw">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="css/updatephoto.css">
-    <title>照片小站-相簿編輯</title>
+    <title>照片小站-相片編輯</title>
   </head>
   <body class="backgroundColor">
+    <script src="js/updatephoto.js"></script>
     <div class="header">
       <?php
         echo '<a href="home.php?id=' . $_SESSION['user']['id'] . '">';
@@ -55,9 +56,9 @@ if ($album['author'] != $_SESSION['user']['name']) {
         <input type="hidden" name="action" value="update">
         <?php
         echo '<input type="hidden" name="id" value="' . $photo['id']. '">';
-        echo '<input type="text" name="title" value="' . $photo['title'] . '" class="input_title">';
+        echo '<input type="text" name="title" value="' . $photo['title'] . '" class="input_title" id="_title">';
         ?>
-        <button type="submit" class="button_update"><spanl class="update_word">修改</spanl></button>
+        <button type="submit" class="button_update" onclick="return checkInput('_title');"><spanl class="update_word">修改</spanl></button>
       </form>
       <form action="updatephoto2.php" method="post">
         <input type="hidden" name="action" value="delete">
