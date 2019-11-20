@@ -52,6 +52,7 @@ if ($album['author'] != $_SESSION['user']['name']) {
     </div> 
     <div class="update_frame">
       <form action="updatephoto2.php" method="post">
+        <input type="hidden" name="action" value="update">
         <?php
         echo '<input type="hidden" name="id" value="' . $photo['id']. '">';
         echo '<input type="text" name="title" value="' . $photo['title'] . '" class="input_title">';
@@ -59,6 +60,7 @@ if ($album['author'] != $_SESSION['user']['name']) {
         <button type="submit" class="button_update"><spanl class="update_word">修改</spanl></button>
       </form>
       <form action="updatephoto2.php" method="post">
+        <input type="hidden" name="action" value="delete">
         <?php
         echo '<input type="hidden" name="id" value="' . $photo['id']. '">';
         ?>
