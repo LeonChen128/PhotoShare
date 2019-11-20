@@ -378,6 +378,38 @@ function getAlbumByIdAndUserName($id,$name) {
   }
 }
 
+function deleteAlbumById($id) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('DELETE FROM Album WHERE id=?');
+    $sql->execute([$id]);
+    $sql = $pdo->prepare('SELECT * FROM Album WHERE id=?');
+    $sql->execute([$id]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
+function updateAlbum($title, $date, $path, $id) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('UPDATE Album SET title=?, date=?, path=? WHERE id=?');
+    $sql->execute([$title, $date, $path, $id]);
+    $sql = $pdo->prepare('SELECT * FROM Album WHERE title=? AND date=? AND path=? AND id=?');
+    $sql->execute([$title, $date, $path, $id]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
 
 
 
