@@ -44,6 +44,10 @@ switch ($_POST['action']) {
     if (mb_strlen($title) > 10) {
       echo wrongInput('標題字數須小於10', 'updatealbum.php?id=' . $_POST['id']);
     }
+
+    if ($title == '') {
+      echo wrongInput('標題欄位不可空白', 'updatealbum.php?id=' . $_POST['id']);
+    }
   
     if (is_uploaded_file($_FILES['file']['tmp_name'])) {
       $path = 'upload/' . $user['id'] . '/' . $album['id'] . '/1' . '.' . getFileExt($_FILES['file']['name']);
