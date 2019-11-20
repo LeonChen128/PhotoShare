@@ -40,6 +40,7 @@ foreach (getAlbumById($_GET['id']) as $album) {
     <title>照片小站-相簿編輯</title>
   </head>
   <body class="backgroundColor">
+    <script src="js/updatealbum.js"></script>
     <div class="header">
       <?php
         echo '<a href="home.php?id=' . $_SESSION['user']['id'] . '">';
@@ -56,12 +57,12 @@ foreach (getAlbumById($_GET['id']) as $album) {
       echo '<form action="updatealbum2.php" method="post" enctype="multipart/form-data">';
       echo '<input type="hidden" name="action" value="update">';
       echo '<input type="hidden" name="id" value="' . $_GET['id'] . '">';
-      echo '<input type="text" name="title" value="' . $album['title'] . '" class="input_title">';
+      echo '<input type="text" name="title" id="_title" value="' . $album['title'] . '" class="input_title">';
       echo '<br><label type="button" class="upload">';
       echo '<spanl class="upload_word">修改封面</spanl>';
       echo '<input type="file" name="file">';
       echo '</label>';
-      echo '<br><button type="submit" class="button"><spanl class="update_word">修改</spanl></button>';
+      echo '<br><button type="submit" class="button" onclick="return checkInput()"><spanl class="update_word">修改</spanl></button>';
       echo '<a href="photo.php?id=' . $album['id'] . '" class="cancel_word"><div class="cancel">取消</div></a>';
       echo '</form>';
       echo '<form action="updatealbum2.php" method="post">';
