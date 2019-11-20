@@ -364,6 +364,20 @@ function getPhotoByIdAndAlbum_id($id, $album_id) {
   }
 }
 
+function getAlbumByIdAndUserName($id,$name) {
+  $pdo = newPDO();
+  if (!$pdo) {
+    return [];
+  }
+  try {
+    $sql = $pdo->prepare('SELECT * FROM Album WHERE id=? AND author=?');
+    $sql->execute([$id,$name]);
+    return $sql->fetchAll();
+  } catch (PDOException $e) {
+    return [];
+  }
+}
+
 
 
 
