@@ -9,10 +9,10 @@ if (!isset($_POST['name'], $_POST['account'], $_POST['password'], $_POST['repass
   exit();
 }
 
-$name       = inputData($_POST['name']);
-$account    = inputData($_POST['account']);
-$password   = inputData($_POST['password']);
-$repassword = inputData($_POST['repassword']);
+$name       = trim($_POST['name']);
+$account    = trim($_POST['account']);
+$password   = trim($_POST['password']);
+$repassword = trim($_POST['repassword']);
 
 if ($name == '' || $account == '' || $password == '') {
   echo wrongInput('欄位不可空白。', 'register.php');

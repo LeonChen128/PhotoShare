@@ -15,8 +15,8 @@ if (isset($_SESSION['user'])) {
   unset($_SESSION['user']);
 }
 
-$account  = inputData($_POST['account']);
-$password = inputData($_POST['password']);
+$account  = trim($_POST['account']);
+$password = trim($_POST['password']);
 
 if (login($account, $password)) {
   foreach (login($account, $password) as $user) {

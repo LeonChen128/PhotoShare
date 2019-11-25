@@ -16,7 +16,7 @@ if (!is_uploaded_file($_FILES['file']['tmp_name'])) {
     echo wrongInput('照片上傳失敗', 'editphoto.php');
 }
 
-$title = inputData($_POST['title']);
+$title = trim($_POST['title']);
 $album_id = $_POST['id'];
 $date = getDateTime();
 

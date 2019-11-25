@@ -10,10 +10,6 @@ function newPDO() {
   }
 }
 
-function inputData($data) {
-  return trim($data);
-}
-
 function wrongInput($message, $url) {
   echo $message;
   header('Refresh:3 url=' . $url);

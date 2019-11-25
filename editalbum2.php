@@ -27,7 +27,7 @@ if (is_uploaded_file($_FILES['file']['tmp_name'])) {
   echo wrongInput('請上傳相簿封面', 'editalbum.php');
 }
 
-$title  = inputData($_POST['title']);
+$title  = trim($_POST['title']);
 $author = $_SESSION['user']['name'];
 $date   = getDateTime();
 
